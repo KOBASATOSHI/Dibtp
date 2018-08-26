@@ -1,0 +1,12 @@
+<%= form_for @task_master , url: yield(:path) do |f|%>
+  <%= f.label :category %>
+  <%= f.select :category, TaskMaster.categories.keys.to_a ,id: :category %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name, id: :name %>
+  
+  <%= f.label :detail %>
+  <%= f.text_area :detail, id: :detail %>
+  
+  <%= f.submit 'submit' %>
+<% end %>

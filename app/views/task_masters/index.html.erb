@@ -1,0 +1,13 @@
+<% provide(:path, task_masters_path ) %>
+
+<h4>task_master#index</h4>
+<div>
+  <table>
+    <thead>
+      <td>category</td>
+      <td>name</td>
+    </thead>
+    <%= render @task_masters %>
+  </table>
+</div>
+<%= render 'form' %>
