@@ -1,15 +1,15 @@
 <% provide(:path, task_masters_path ) %>
 
-<h4>task_master#index</h4>
-<div>
-  <table>
-    <thead>
-      <td>category</td>
-      <td>name</td>
-    </thead>
-    <%= render @task_masters %>
-  </table>
-</div>
+<h4 class='center'>task_master#index</h4>
+<div class='row'>
 <%= render 'form' %>
-
-<h4><%= link_to "新規ユーザー登録" ,new_user_path %></h4>
+  <div class='col-xs-8'>
+    <table class='table table-striped table-hover'>
+      <thead>
+        <td class='col-xs-3'>category</td>
+        <td>name</td>
+      </thead>
+      <%= render @task_masters %>
+    </table>
+  </div>
+</div>

@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180826023407) do
+ActiveRecord::Schema.define(version: 20180929100103) do
 
   create_table "task_masters", force: :cascade do |t|
     t.integer "category"
     t.string "name"
     t.text "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_task_masters", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "task_master_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_master_id"], name: "index_user_task_masters_on_task_master_id"
+    t.index ["user_id"], name: "index_user_task_masters_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
