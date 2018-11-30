@@ -1,0 +1,5 @@
+<tr>
+  <td><%=  user_task_master.task_master.category %></td>
+  <td><%= user_task_master.task_master.name %></td>
+  <td><%= link_to "削除", user_task_master_path(user_task_master.id), method: "delete" %></td>
+</tr>

@@ -1,4 +1,9 @@
 <tr>
   <td><%=  task_master.category %></td>
   <td><%= link_to task_master.name, edit_task_master_path(task_master.id)  %></td>
+  <% if !@utm_tm_ids.nil? && !@utm_tm_ids.include?(task_master.id) %>
+    <td><%= link_to "追加" , task_master_user_task_masters_path(task_master.id) ,method: "post" ,class: "btn btn-primary" %></td>
+  <% else %>
+    <td></td>
+  <% end %>
 </tr>

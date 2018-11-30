@@ -1,4 +1,6 @@
 class TaskMaster < ApplicationRecord
+  has_many :user_task_masters
+  has_many :users, through: :user_task_masters
   validates :name, presence: true, uniqueness: true
   validates :detail, presence: true
   

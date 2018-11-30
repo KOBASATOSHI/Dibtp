@@ -28,7 +28,7 @@ class TaskMastersController < ApplicationController
       render 'edit'
     end
   end
-
+  
   private
   def task_master_params
     params.require(:task_master).permit(:category, :name, :detail)

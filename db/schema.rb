@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180929100103) do
+ActiveRecord::Schema.define(version: 20180930095500) do
 
   create_table "task_masters", force: :cascade do |t|
     t.integer "category"
@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 20180929100103) do
     t.text "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted", default: false
+    t.date "deleted_at"
+    t.index ["id"], name: "index_task_masters_on_id"
   end
 
   create_table "user_task_masters", force: :cascade do |t|
@@ -25,6 +28,8 @@ ActiveRecord::Schema.define(version: 20180929100103) do
     t.integer "task_master_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted", default: false
+    t.date "deleted_at"
     t.index ["task_master_id"], name: "index_user_task_masters_on_task_master_id"
     t.index ["user_id"], name: "index_user_task_masters_on_user_id"
   end
@@ -33,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180929100103) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_users_on_id"
   end
 
 end
