@@ -1,0 +1,21 @@
+<% provide(:path, to_do_group_to_do_masters_path(@to_do_group.id) ) %>
+
+<h2><%= @to_do_group.name %></h2>
+<div class='row'>
+  <div class='col-xs-4'>
+    <%= render 'to_do_masters/form'%>
+  </div>
+  <div class='col-xs-8'>
+    <table class='table'>
+      <thead>
+        <td>名前</td>
+        <td>期限</td>
+        <td>種類</td>
+        <td>アクション</td>
+      </thead>
+      <tbody>
+        <%= render @to_do_masters %>
+      </tbody>
+    </table>
+  </div>
+</div>
