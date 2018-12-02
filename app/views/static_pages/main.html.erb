@@ -1,26 +1,3 @@
-<% provide(:create_my_task_master, true ) %>
 
 <h4>Main</h4>
 <%= current_user.name %>
-
-<div class='row'>
-  <div class='col-xs-6'>
-    <table class='table table-striped table-hover'>
-      <thead>
-        <td class='col-xs-3'>category</td>
-        <td>name</td>
-      </thead>
-      <%= render @task_masters %>
-    </table>
-  </div>
-  <div class='col-xs-6'>
-    <table class='table table-striped table-hover'>
-      <thead>
-        <td class='col-xs-3'>category</td>
-        <td>name</td>
-        <td></td>
-      </thead>
-      <%= render @user_task_masters %>
-    </table>
-  </div>
-</div>

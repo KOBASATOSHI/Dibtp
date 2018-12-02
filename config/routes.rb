@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   resources :to_do_groups, shallow: true do
     resources :to_do_masters
   end
-  resources :task_masters, shallow: true do
-    resources :user_task_masters
-  end
   resources :users
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
