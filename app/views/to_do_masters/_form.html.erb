@@ -1,0 +1,19 @@
+<%= form_for @to_do_master , url: yield(:path) do |f|%>
+   
+  <%= f.label :name %>
+  <%= f.text_field :name, id: :name, class:'form-control' %>
+  
+  <%= f.label :detail %>
+  <%= f.text_area :detail, id: :detail, class:'form-control' %>
+      
+  <%= f.label :order %>
+  <%= f.number_field :order, id: :order, step: 1.0, class:'form-control' %>
+      
+  <%= f.label :to_do_type %>
+  <%= f.select :to_do_type, ToDoMaster.to_do_types.keys.to_a, {include_blank: true}, class:'form-control' %>
+      
+  <%= f.label :deadline_days %>
+  <%= f.number_field :deadline_days, id: :order, step: 1.0, class:'form-control' %>
+      
+  <%= f.submit 'submit', class:'btn btn-primary' %>
+<% end %>

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserTaskMasterTest < ActiveSupport::TestCase
+class ToDoGroupsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

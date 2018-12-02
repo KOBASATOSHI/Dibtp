@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to to_do_group.name , to_do_group_path(to_do_group) %></td>
+  <td><%= to_do_group.updated_at %></td>
+  <td>
+    <%= link_to '編集' , edit_to_do_group_path(to_do_group)  %>
+    | <%= link_to '削除' , to_do_group_path(to_do_group), method: "delete"  %>
+    </td>
+</tr>

@@ -4,15 +4,15 @@
         <h4 id="user"><%= link_to "Now You logged in as #{current_user.name}" , main_path %></h4>
         <nav>
           <ul class='nav navbar-nav navbar-right'>
-            <li><%= link_to "タスクマスタ管理", task_masters_path %></li>
-            <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+            <li><%= link_to 'ToDoグループ管理', to_do_groups_path %></li>
+            <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
           </ul>
         </nav>
     <% else %>
       <nav>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "新規ユーザー登録" ,new_user_path %></li>
-          <li><%= link_to "ログイン" , login_path %></li>
+        <ul class='nav navbar-nav navbar-right'>
+          <li><%= link_to '新規ユーザー登録' ,new_user_path %></li>
+          <li><%= link_to 'ログイン' , login_path %></li>
         </ul>
       </nav>
     <% end %>
