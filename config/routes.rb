@@ -8,6 +8,9 @@ Rails.application.routes.draw do
    resources :to_do_masters
  end
   # root 'users#new'
+  resources :to_do_groups, shallow: true do
+    resources :to_do_masters
+  end
   resources :users
   get    '/main',    to: 'static_pages#main'
 end
