@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-
+  has_many :user_to_do_groups
+  has_many :to_do_groups, through: :user_to_do_groups
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
+         :rememberable, :trackable, :validatable,
+         :timeoutable, :omniauthable, omniauth_providers: [:twitter]
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
