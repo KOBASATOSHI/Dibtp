@@ -1,12 +1,12 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Dibtp", root_path, id: "logo" %>
+<header class='navbar navbar-fixed-top navbar-inverse'>
+  <div class='container'>
+    <%= link_to "Dibtp", root_path, id: 'logo' %>
     <% if user_signed_in? %>
         <nav>
           <ul class='nav navbar-nav navbar-right'>
             <li><%= link_to 'ToDoグループ管理', to_do_groups_path %></li>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %><li>
-            <li class='aa'><%= current_user.username %></li>
+            <li class='username'><%= current_user.username %></li>
           </ul>
         </nav>
     <% else %>
