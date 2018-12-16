@@ -29,7 +29,7 @@ class User < ApplicationRecord
   def register_user_to_do_group(to_do_group)
     @user_to_do_group = UserToDoGroup.find_to_do_group(self, to_do_group)
     if @user_to_do_group.nil?
-      UserToDoGroup.create(user_id: self.id, to_do_group_id: to_do_group.id)
+      UserToDoGroup.create(user_id: self.id, to_do_group_id: to_do_group.id, active: true)
     else
       @user_to_do_group.update(active: true)
     end
