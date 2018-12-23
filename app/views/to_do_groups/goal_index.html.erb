@@ -1,6 +1,26 @@
-<h2>目標一覧</h2>
+<h2>現在の目標</h2>
 <div class='row'>
   <div class='col-xs-12'>
+    <% if !@current_active_to_do_group.nil?%>
+      <table class='table'>
+        <thead>
+          <td>名前</td>
+          <td>詳細</td>
+          <td>アクション</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @current_active_to_do_group.name %></td>
+            <td><%= @current_active_to_do_group.detail %></td>
+            <td>
+              <%= link_to '削除', release_to_do_group_path(@current_active_to_do_group.id) %>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    
+    <h2>目標一覧</h2>
     <table class='table'>
       <thead>
         <td>名前</td>

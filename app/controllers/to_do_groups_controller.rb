@@ -6,7 +6,12 @@ class ToDoGroupsController < ApplicationController
   end
   
   def goal_index
-    @goals = ToDoGroup.all.active
+    @current_active_to_do_group = current_user.current_active_to_do_group
+    if !@current_active_to_do_group.nil?
+      @goals = ToDoGroup.all.active.where("NOT id = ?", @current_active_to_do_group.id)
+    else
+      @goals = ToDoGroup.all.active
+    end
   end
   
   # def new
@@ -55,7 +60,7 @@ class ToDoGroupsController < ApplicationController
       @to_do_group = ToDoGroup.find(params[:id])
       current_user.register_user_to_do_group(@to_do_group)
     end
-    redirect_to root_url
+    redirect_to pages_show_path
   end
   
   def release

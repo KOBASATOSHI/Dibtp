@@ -1,2 +1,21 @@
-<h1>こんにちは、<%= current_user.email %>さん</h1>
-<p>ユーザー用ページです。aaa</p>
+<h1>こんにちは、<%= current_user.username %>さん</h1>
+<p>ユーザー用ページです。</p>
+
+<h4><%= link_to '目標一覧', goal_index_to_do_groups_path %></h4>
+
+<% if !current_user.current_active_to_do_group.nil? %>
+  <h4>現在の目標：<%= current_user.current_active_to_do_group.name %></h4>
+<% end %>
+
+<% if @to_dos.count > 0 %>
+  <table class='table'>
+      <thead>
+        <td>名前</td>
+        <td>期限</td>
+        <td></td>
+      </thead>
+      <tbody>
+        <%= render @to_dos %>
+      </tbody>
+    </table>
+<% end %>
