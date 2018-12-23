@@ -1,4 +1,5 @@
 class ToDoGroupsController < ApplicationController
+  before_action :sign_in_required
   
   def index
     @to_do_group = ToDoGroup.new
