@@ -1,4 +1,5 @@
 class ToDoMastersController < ApplicationController
+  before_action :sign_in_required
   # def new
   #   @to_do_group = ToDoGroup.find(params[:to_do_group_id])
   #   @to_do_master= @to_do_group.to_do_masters.build
