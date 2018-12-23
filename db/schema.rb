@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181216024804) do
+ActiveRecord::Schema.define(version: 20181222124623) do
 
   create_table "to_do_groups", force: :cascade do |t|
     t.string "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20181216024804) do
   create_table "to_do_masters", force: :cascade do |t|
     t.string "name"
     t.string "detail"
-    t.integer "order", limit: 2
+    t.integer "order_number", limit: 2
     t.integer "parent_order", limit: 2
     t.integer "to_do_type", limit: 1
     t.integer "deadline_days", limit: 2
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20181216024804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["to_do_group_id"], name: "index_to_do_masters_on_to_do_group_id"
+  end
+
+  create_table "to_dos", force: :cascade do |t|
+    t.boolean "done", default: false, null: false
+    t.date "deadline"
+    t.integer "count"
+    t.text "note"
+    t.integer "to_do_master_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["to_do_master_id"], name: "index_to_dos_on_to_do_master_id"
+    t.index ["user_id"], name: "index_to_dos_on_user_id"
   end
 
   create_table "user_to_do_groups", force: :cascade do |t|

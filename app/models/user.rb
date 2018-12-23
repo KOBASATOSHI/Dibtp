@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_to_do_groups
   has_many :to_do_groups, through: :user_to_do_groups
+  has_many :to_dos
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,6 +27,7 @@ class User < ApplicationRecord
   end
   
   # user_to_do_groupがなければ、追加、あればアクティブにする
+  # 登録されたToDoグループの一つ目を作成する
   def register_user_to_do_group(to_do_group)
     @user_to_do_group = UserToDoGroup.find_to_do_group(self, to_do_group)
     if @user_to_do_group.nil?
@@ -33,6 +35,8 @@ class User < ApplicationRecord
     else
       @user_to_do_group.update(active: true)
     end
+    @to_do_master = to_do_group.to_do_masters.order(:order_number).limit(1)
+    @to_do_master[0].create_to_do(self, 1)
   end
   
   #一つでもactiveなUserToDoGroupがある場合true
@@ -46,6 +50,13 @@ class User < ApplicationRecord
       return @user_to_do_group[0].to_do_group
     else
       return nil
+    end
+  end
+  
+  def close_all
+    @to_dos = self.to_dos.on_going
+    @to_dos.each do |t|
+      t.update(done: true)
     end
   end
 end

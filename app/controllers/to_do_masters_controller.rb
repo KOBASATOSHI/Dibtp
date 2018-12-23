@@ -31,6 +31,6 @@ class ToDoMastersController < ApplicationController
   
   private
   def to_do_master_params
-    params.require(:to_do_master).permit(:name, :detail, :order, :to_do_type, :deadline_days)
+    params.require(:to_do_master).permit(:name, :detail, :order_number, :to_do_type, :deadline_days)
   end
 end
