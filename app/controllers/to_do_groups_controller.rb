@@ -59,6 +59,7 @@ class ToDoGroupsController < ApplicationController
   end
   
   def release
+    current_user.close_all
     @user_to_do_group = UserToDoGroup.find_to_do_group(current_user, ToDoGroup.find(params[:id]))
     if !@user_to_do_group.nil?
       @user_to_do_group.update(active: false)

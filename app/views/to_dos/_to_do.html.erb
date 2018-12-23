@@ -1,0 +1,5 @@
+<tr>
+  <td><%= to_do.to_do_master.name  %></td>
+  <td><%= to_do.deadline %>日後</td>
+  <td><%= link_to '完了', to_do_path(to_do.id), method: :patch %></td>
+</tr>

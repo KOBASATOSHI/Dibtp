@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     resources :to_do_masters
   end
   resources :users
+  resources :to_dos, only:[:update]
   get    '/main',    to: 'static_pages#main'
 end
