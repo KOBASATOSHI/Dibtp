@@ -1,1 +1,7 @@
-<h1>ようこそaaa</h1>
+<h1>ようこそ</h1>
+
+<h4><%= link_to '目標一覧', goal_index_to_do_groups_path %></h4>
+
+<% if !current_user.current_active_to_do_group.nil? %>
+  <h4>現在の目標：<%= current_user.current_active_to_do_group.name %></h4>
+<% end %>

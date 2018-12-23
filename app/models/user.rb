@@ -22,4 +22,28 @@ class User < ApplicationRecord
       super
     end
   end
+  
+  # user_to_do_groupがなければ、追加、あればアクティブにする
+  def register_user_to_do_group(to_do_group)
+    @user_to_do_group = UserToDoGroup.find_to_do_group(self, to_do_group)
+    if @user_to_do_group.nil?
+      UserToDoGroup.create(user_id: self.id, to_do_group_id: to_do_group.id, active: true)
+    else
+      @user_to_do_group.update(active: true)
+    end
+  end
+  
+  #一つでもactiveなUserToDoGroupがある場合true
+  def have_active_user_to_do_group?
+    return self.user_to_do_groups.active.count != 0
+  end
+  
+  def current_active_to_do_group
+    @user_to_do_group = self.user_to_do_groups.active
+    if @user_to_do_group.count == 1
+      return @user_to_do_group[0].to_do_group
+    else
+      return nil
+    end
+  end
 end
