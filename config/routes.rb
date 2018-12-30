@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
   root 'pages#index'
   get 'pages/show'
+  
+  resources :users
 
   devise_scope :user do
   get :sign_in, to: 'devise/sessions#new', as: :new_user_session
@@ -25,5 +27,4 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :to_dos, only:[:update]
-  get    '/main',    to: 'static_pages#main'
 end
