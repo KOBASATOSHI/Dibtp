@@ -24,12 +24,13 @@ class ToDoMaster < ApplicationRecord
     return my_index == to_do_masters.count - 1 ? nil : to_do_masters[my_index + 1]
   end
   
-  def create_to_do(user, count)
+  def create_to_do(user, count, date)
     @to_do = ToDo.create(
       user_id: user.id,
       to_do_master_id: self.id,
-      deadline: Date.today + self.deadline_days,
-      count: count
+      deadline: date + self.deadline_days,
+      count: count,
+      start_count: user.user_to_do_groups.active[0].start_count
     )
     return @to_do
   end

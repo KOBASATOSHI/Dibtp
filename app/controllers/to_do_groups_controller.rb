@@ -22,7 +22,7 @@ class ToDoGroupsController < ApplicationController
   def show
     @to_do_group = ToDoGroup.find(params[:id])
     @to_do_master = @to_do_group.to_do_masters.new
-    @to_do_masters = @to_do_group.to_do_masters.active
+    @to_do_masters = @to_do_group.to_do_masters.active.order('order_number')
   end
   
   def create
