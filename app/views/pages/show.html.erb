@@ -2,27 +2,29 @@
 <div class='row'>
   <div class='col-xs-4'>
     <h4><%= link_to '目標一覧', goal_index_to_do_groups_path %></h4>
-    <% if !@to_do_group.nil? %>
+    <% if @to_do_group.nil? %>
+  </div>
+    <% else %>
       <h4>現在の目標：<%= @to_do_group.name %></h4>
       <h4>完了数：<%= @fin_to_dos_count %> / <%= @to_do_masters_count %></h4>
+  </div>
+      <div class='col-xs-8 to_do_bg'>
+        <h4>ToDo</h4>
+        <div class='fusen'>
+          <% if @to_dos.count > 0 %>
+            <ul>
+              <%= render @to_dos %>
+            </ul>
+          <% end %>
+        </div>
+        <div class='fusen'>
+          <% if @fin_to_dos.count > 0 %>
+          <h4>完了済ToDo</h4>
+            <ul>
+              <%= render partial: "/to_dos/to_do", collection: @fin_to_dos %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </div>
-  <div class='col-xs-8 to_do_bg'>
-    <h4>ToDo</h4>
-    <div class='fusen'>
-      <% if @to_dos.count > 0 %>
-        <ul>
-          <%= render @to_dos %>
-        </ul>
-      <% end %>
-    </div>
-    <div class='fusen'>
-      <% if @fin_to_dos.count > 0 %>
-      <h4>完了済ToDo</h4>
-        <ul>
-          <%= render partial: "/to_dos/to_do", collection: @fin_to_dos %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
 </div>
