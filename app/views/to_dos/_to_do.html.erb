@@ -1,5 +1,14 @@
-<tr>
-  <td><%= to_do.to_do_master.name  %></td>
-  <td><%= to_do.deadline %>日後</td>
-  <td><%= link_to '完了', to_do_path(to_do.id), method: :patch %></td>
-</tr>
+<li>
+  <div class='col-xs-9'>
+    </h5><%= to_do.to_do_master.name  %></h5></br>
+    <%= to_do.to_do_master.detail  %>
+  </div>
+  <div class='col-xs-3'>
+    <% if !to_do.done %>
+      <%= link_to '完了', to_do_path(to_do.id), method: :patch, class: 'button'%></br>
+        期限：<%= to_do.deadline.strftime('%Y/%m/%d') %>
+    <% else %>
+      完了日：<%= to_do.updated_at.strftime('%Y/%m/%d') %>
+    <% end %>
+  </div>
+</li>

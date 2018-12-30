@@ -29,12 +29,13 @@ class User < ApplicationRecord
   def register_user_to_do_group(to_do_group)
     @user_to_do_group = UserToDoGroup.find_to_do_group(self, to_do_group)
     if @user_to_do_group.nil?
-      UserToDoGroup.create(user_id: self.id, to_do_group_id: to_do_group.id, active: true)
+      UserToDoGroup.create(user_id: self.id, to_do_group_id: to_do_group.id, active: true, start_count: 1)
     else
-      @user_to_do_group.update(active: true)
+      @start_count = @user_to_do_group[0].start_count
+      @user_to_do_group.update(active: true, start_count: @start_count + 1)
     end
     @to_do_master = to_do_group.to_do_masters.order(:order_number).limit(1)
-    @to_do_master[0].create_to_do(self, 1)
+    @to_do_master[0].create_to_do(self, 1, Date.today)
   end
   
   #一つでもactiveなUserToDoGroupがある場合true
