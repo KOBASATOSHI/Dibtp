@@ -1,28 +1,36 @@
-<h1>こんにちは、<%= current_user.username %>さん</h1>
 <div class='row'>
   <div class='col-xs-4'>
-    <h4><%= link_to '目標一覧', goal_index_to_do_groups_path %></h4>
-    <% if !@to_do_group.nil? %>
-      <h4>現在の目標：<%= @to_do_group.name %></h4>
-      <h4>完了数：<%= @fin_to_dos_count %> / <%= @to_do_masters_count %></h4>
+    <h4><%= current_user.username %></h4>
+    <h4><%= link_to '目標一覧', goal_index_to_do_groups_path, class: 'button' %></h4>
+    <% if @to_do_group.nil? %>
+  </div>
+    <% else %>
+      <h4>目標：</br><%= @to_do_group.name %></h4>
+      <h4>進捗：</h4>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="<%= @fin_rate %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @fin_rate %>%;">
+          <span class="sr-only"><%= @fin_rate %>% Complete</span>
+        </div>
+      </div>
+      <p class='text-right'><%= @fin_to_dos_count %> / <%= @to_do_masters_count %></p>
+  </div>
+      <div class='col-xs-8 to_do_bg'>
+        <h4>ToDo</h4>
+        <div class='fusen'>
+          <% if @to_dos.count > 0 %>
+            <ul>
+              <%= render @to_dos %>
+            </ul>
+          <% end %>
+        </div>
+        <div class='fusen'>
+          <% if @fin_to_dos.count > 0 %>
+          <h4>完了済ToDo</h4>
+            <ul>
+              <%= render partial: "/to_dos/to_do", collection: @fin_to_dos %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </div>
-  <div class='col-xs-8 to_do_bg'>
-    <h4>ToDo</h4>
-    <div class='fusen'>
-      <% if @to_dos.count > 0 %>
-        <ul>
-          <%= render @to_dos %>
-        </ul>
-      <% end %>
-    </div>
-    <div class='fusen'>
-      <% if @fin_to_dos.count > 0 %>
-      <h4>完了済ToDo</h4>
-        <ul>
-          <%= render partial: "/to_dos/to_do", collection: @fin_to_dos %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
 </div>
