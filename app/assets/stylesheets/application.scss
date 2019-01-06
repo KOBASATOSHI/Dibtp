@@ -12,8 +12,8 @@
  *
  *= require jquery-tablesorter/theme.bootstrap
  *= require jquery-tablesorter/addons/pager/jquery.tablesorter.pager
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
  
 @import "bootstrap-sprockets";
