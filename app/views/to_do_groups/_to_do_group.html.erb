@@ -1,8 +1,8 @@
 <tr>
   <td><%= link_to to_do_group.name , to_do_group_path(to_do_group) %></td>
-  <td><%= to_do_group.updated_at %></td>
+  <td><%= to_do_group.updated_at.strftime('%Y年%m月%d日') %></td>
   <td>
-    <%= link_to '編集' , edit_to_do_group_path(to_do_group)  %>
-    | <%= link_to '削除' , to_do_group_path(to_do_group), method: "delete"  %>
+    <%= link_to '編集' , edit_to_do_group_path(to_do_group), class: 'btn btn-default btn-xs'  %>
+    | <%= link_to '削除' , to_do_group_path(to_do_group), method: "delete", class: 'btn btn-default btn-xs' %>
     </td>
 </tr>
