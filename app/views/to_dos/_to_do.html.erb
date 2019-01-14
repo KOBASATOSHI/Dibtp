@@ -1,11 +1,11 @@
 <li>
   <div class='col-xs-9'>
-    </h5><%= to_do.to_do_master.name  %></h5></br>
-    <%= to_do.to_do_master.detail  %>
+    <p class='to_do'><%= to_do.to_do_master.name  %></p>
+    <p class='to_do_detail'><%= to_do.to_do_master.detail %></p>
   </div>
   <div class='col-xs-3'>
     <% if !to_do.done %>
-      <%= link_to '完了', to_do_path(to_do.id), method: :patch, class: 'button'%></br>
+      <%= link_to '完了', to_do_path(to_do.id), method: :patch, class: 'button', data: {confirm: '完了してもよろしいですか？' }%></br>
         期限：<%= to_do.deadline.strftime('%Y/%m/%d') %>
     <% else %>
       完了日：<%= to_do.updated_at.strftime('%Y/%m/%d') %>

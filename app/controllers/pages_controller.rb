@@ -22,6 +22,7 @@ class PagesController < ApplicationController
       
       @fin_to_dos_count = @fin_to_dos.where("count= ? and start_count = ?", 1, @user_to_do_group_start_count).count
       @fin_rate = @to_do_masters_count > 0 ? (@fin_to_dos_count.to_f / @to_do_masters_count.to_f).round(3) * 100 : 0
+      @achive = @fin_to_dos_count == @to_do_masters_count
     end
   end
 end
