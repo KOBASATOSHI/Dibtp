@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :to_dos, only:[:update]
+  resources :user_to_do_groups, only:[:update]
 end

@@ -5,12 +5,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :rememberable, :trackable, :registerable, omniauth_providers: [:twitter]
-  validates :username, presence: true, length: { maximum: 50 }
-  before_save   :downcase_email
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-                  format: { with: VALID_EMAIL_REGEX },
-                  uniqueness: { case_sensitive: false }
+  # validates :username, presence: true, length: { maximum: 50 }
+  # before_save   :downcase_email
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # validates :email, presence: true, length: { maximum: 255 },
+  #                 format: { with: VALID_EMAIL_REGEX },
+  #                 uniqueness: { case_sensitive: false }
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
@@ -67,8 +67,8 @@ class User < ApplicationRecord
   
   private
   
-    # メールアドレスをすべて小文字にする
-    def downcase_email
-      self.email.downcase!
-    end
+    # # メールアドレスをすべて小文字にする
+    # def downcase_email
+    #   self.email.downcase!
+    # end
 end
