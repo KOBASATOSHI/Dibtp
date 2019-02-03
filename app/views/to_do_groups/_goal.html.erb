@@ -3,7 +3,6 @@
     <p class='goal_name'><%= goal.name %></p>
       <% if goal.to_do_master_names.size > 0 %>
         <ul class="popup">
-          タスク一覧
           <% for tdm in goal.to_do_master_names %>
             <li><%= tdm %></li>
           <% end %>
