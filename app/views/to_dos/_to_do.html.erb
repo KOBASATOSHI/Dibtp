@@ -5,10 +5,10 @@
   </div>
   <div class='col-xs-3'>
     <% if !to_do.done %>
-      <%= link_to '完了', to_do_path(to_do.id), method: :patch, class: 'button', data: {confirm: '完了してもよろしいですか？' }%></br>
-        期限：<%= to_do.deadline.strftime('%Y/%m/%d') %>
+      <h5><%= link_to '完了', to_do_path(to_do.id), method: :patch, class: 'button', data: {confirm: '完了してもよろしいですか？' }%></br>
+        期限：<%= to_do.deadline.strftime('%m/%d') %></h5>
     <% else %>
-      完了日：<%= to_do.updated_at.strftime('%Y/%m/%d') %>
+     <h5> 完了日：<%= to_do.updated_at.strftime('%m/%d') %></h5>
     <% end %>
   </div>
 </li>

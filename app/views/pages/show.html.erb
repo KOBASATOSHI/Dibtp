@@ -5,11 +5,11 @@
     <% if @to_do_group.nil? %>
   </div>
     <% else %>
-      <h4>目標：</br><%= @to_do_group.name %></h4>
+      <h4>目標：</br>　<%= @to_do_group.name %></h4>
       <h4>進捗：</h4>
       <div class="col-xs-10">
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="<%= @fin_rate %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @fin_rate %>%;">
+          <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="<%= @fin_rate %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @fin_rate %>%;">
             <span class="sr-only"><%= @fin_rate %>% Complete</span>
           </div>
         </div>
@@ -21,23 +21,14 @@
         <h4 class='button'>達成済み</h4>
       <% end %>
   </div>
-      <div class='col-xs-8 to_do_bg'>
-        <h4>ToDo</h4>
-        <div class='fusen'>
-          <% if @to_dos.count > 0 %>
-            <ul>
-              <%= render @to_dos %>
-            </ul>
-          <% end %>
-        </div>
-        <div class='fusen'>
-          <% if @fin_to_dos.count > 0 %>
-          <h4>完了済ToDo</h4>
-            <ul>
-              <%= render partial: "/to_dos/to_do", collection: @fin_to_dos %>
-            </ul>
-          <% end %>
-        </div>
-      </div>
+  <div class='col-xs-8'>
+    <div class='text-right'>
+      <%= link_to '未完了', pages_get_to_dos_path(:type => 1), method: "get",:remote => true, class: 'button' %>
+      <%= link_to '完了', pages_get_to_dos_path(:type => 2), method: "get",:remote => true, class: 'button' %>
+    </div>
+    <div id='to_dos' class='to_do_bg'>
+      <%= render 'to_dos' %>
+    </div>
+  </div>
     <% end %>
 </div>
