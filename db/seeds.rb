@@ -50,3 +50,11 @@ end
                   order_number: i, to_do_type: 'repeat', deadline_days: 1)
 end
 
+(1..50).each do |n|
+  @to_do_group = ToDoGroup.create(name: "ToDoGroup#{n}", detail: "ToDoGroup#{n} detail")
+  ToDoMaster.create(to_do_group_id: @to_do_group.id,
+                  name: "task#{n}",
+                  detail:"detail#{n}",
+                  order_number: 1, to_do_type: 'one_time', deadline_days: 1)
+end
+
