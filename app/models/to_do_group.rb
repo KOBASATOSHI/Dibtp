@@ -5,4 +5,10 @@ class ToDoGroup < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   
   scope :active, -> {where(deleted: false)}
+  
+  def to_do_master_names
+    list = self.to_do_masters
+    list = list.map{ |to_do_master| to_do_master.name }
+    return list
+  end
 end

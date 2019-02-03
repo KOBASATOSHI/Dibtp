@@ -108,7 +108,7 @@ h2 {
 
 p {
   font-size: 1.1em;
-  line-height: 1.7em;
+  line-height: 1.5em;
 }
 
 /* header */
@@ -162,22 +162,28 @@ footer {
   }
 }
 
+// ToDoの付箋スタイル
 .fusen{
-    // width:600px;/*幅はお好きなサイズに*/
+    width: 100%; /*幅はお好きなサイズに*/
+    height: 100%;
     position: relative;
     z-index:0;
+    display:inline-block;
 }
 
 .fusen ul {
-    list-style: none
+    list-style: none;
+    height: 100%;
 }
 
 .fusen ul li {
-    // list-style: none;
-    height: 60px;
+    // max-height:80px;
+    display:inline-block;
+    width:100%;
+    height: 100%;
     font-size: 0.9em;
-    margin: 1.6em 0;
-    padding: 1em;
+    margin: 1.2em 0;
+    padding: 0.5em;
     position: relative;
     /* グラデーションで折り目がついた感じに */
     background: linear-gradient(to right, #ffffcc 0%, #f1f1c1 0.5%, #f1f1c1 13%, #ffffcc 16%);
@@ -197,8 +203,24 @@ footer {
     transform: rotate(2deg);
 }
 
+.to_do_detail {
+  border-radius: 5px; 
+  border:$black solid 1px;
+  overflow:auto;
+  max-height:80px;
+  padding-left: 5px;
+  margin-left: 10px;
+}
+
+.to_do {
+  font-size: 1.4em;
+  margin: 3px 0px;
+}
+
+// ボタンの枠
 .button {
   display: inline-block;
+  margin: 0.5em 0.2em;
   padding: .2em 2.5em;
   border: 2px solid #333;
   border-radius: .4em 2em .5em 3em/3em .5em 2em .5em;
@@ -215,4 +237,50 @@ footer {
   border:$black solid 1px;
   overflow:auto;
   max-height:700px;
+  height: 100%;
+  padding: 5px 10px;
+}
+
+// 目標一覧の吹き出し
+.goal_name_component{
+  position: relative;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  border-radius: 5px;
+  top: 0px;
+  left: 280px;
+  background: #81BEF7;
+  z-index:1;
+  list-style: none;
+  min-width: 100px;
+  white-space: nowrap;
+}
+
+.popup:hover {
+  display: block;
+}
+
+.popup:before{
+	content: "";
+	position: absolute;
+	top: 0%;
+	left: -25px;
+ 	margin-top: 0px;
+	border: 15px solid transparent;
+	border-right: 15px solid #81BEF7;
+}
+
+
+.goal_name{
+  padding: 5px;
+  // position: relative;
+  z-index: 0;
+}
+
+.goal_name:hover + .popup{
+  display: block;
 }

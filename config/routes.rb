@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   root 'pages#index'
   get 'pages/show'
-  
+  get 'pages/get_to_dos'
   resources :users
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   end
 
   resources :to_dos, only:[:update]
+  resources :user_to_do_groups, only:[:update]
 end
