@@ -1,16 +1,9 @@
 class User < ApplicationRecord
-  has_many :user_to_do_groups
-  has_many :to_do_groups, through: :user_to_do_groups
-  has_many :to_dos
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :omniauthable, :rememberable, :trackable, :registerable, omniauth_providers: [:twitter]
-  # validates :username, presence: true, length: { maximum: 50 }
-  # before_save   :downcase_email
-  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  # validates :email, presence: true, length: { maximum: 255 },
-  #                 format: { with: VALID_EMAIL_REGEX },
-  #                 uniqueness: { case_sensitive: false }
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :timeoutable, :omniauthable, omniauth_providers: [:twitter]
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
