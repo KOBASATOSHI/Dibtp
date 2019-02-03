@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :user_to_do_groups
+  has_many :to_dos
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
