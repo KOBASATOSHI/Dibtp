@@ -10,7 +10,16 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @current_active_to_do_group.name %></td>
+            <td class='goal_name_component'>
+              <p class='goal_name'><%= @current_active_to_do_group.name %></p>
+                <% if @current_active_to_do_group.to_do_master_names.size > 0 %>
+                  <ul class="popup">
+                    <% for tdm in @current_active_to_do_group.to_do_master_names %>
+                      <li><%= tdm %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+            </td>
             <td><%= @current_active_to_do_group.detail %></td>
             <td>
               <%= link_to '削除', release_to_do_group_path(@current_active_to_do_group.id), class: 'button' %>
