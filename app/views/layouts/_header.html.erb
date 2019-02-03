@@ -23,7 +23,8 @@
     <% else %>
       <nav>
         <ul class='nav navbar-nav navbar-right'>
-          <li><%= link_to 'サインアップ / ログイン', new_user_session_path %></li>
+          <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン',  new_user_session_path%></li>
         </ul>
       </nav>
     <% end %>
